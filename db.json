@@ -1,0 +1,74 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "email": "swd@gmail.com",
+      "password": "wsdefrgthygfdesefrgt",
+      "id": 2
+    },
+    {
+      "email": "riya@gmail.com",
+      "password": "drcfvghbjnkhbgvfd",
+      "id": 3
+    },
+    {
+      "email": "rajeev@gmail.com",
+      "password": "xdfghujihdgfthyju",
+      "id": 4
+    },
+    {
+      "email": "sanya@gmail.com",
+      "password": "sedfcgvhbxdgcfhgvbhmnjb",
+      "id": 5
+    },
+    {
+      "email": "sanya@gmail.com",
+      "id": 6
+    },
+    {
+      "email": "sanya@gmail.com",
+      "id": 7
+    },
+    {
+      "email": "sanya@gmail.com",
+      "id": 8
+    },
+    {
+      "email": "xyz@gmail.com",
+      "password": "sxdcfgvhjndfgvhb",
+      "id": 9
+    },
+    {
+      "confirmPassword": "sanyachawla",
+      "id": 10
+    },
+    {
+      "confirmPassword": "sanyachawlaaaa",
+      "id": 11
+    },
+    {
+      "email": "iddemo214@gmail.com",
+      "password": "password",
+      "id": 12
+    },
+    {
+      "email": "iddemo214@gmail.com",
+      "password": "password",
+      "id": 13
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

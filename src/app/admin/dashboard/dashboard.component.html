@@ -1,0 +1,132 @@
+<div class="d-flex">
+  <!-- mentor chart -->
+  <div class="row1">
+    <mat-card class="example-card1">
+      <span> <a routerLink="/admin/mentorlist" class="showmentees2" style="text-decoration:none; float: right;"
+          (click)="onClickSideNav('Mentor')">Show All</a></span>
+      <mat-card-content>
+        <highcharts-chart [Highcharts]="Highcharts" [options]="donutChartOptions" style="overflow:hidden;  ">
+        </highcharts-chart>
+
+      </mat-card-content>
+    </mat-card>
+
+    <!-- mentees List -->
+    <mat-card class="example-card1">
+      <mat-card-header>
+        <mat-card-title class="totaltrainees">Total Trainees {{mentees?.message}}
+          <span class="traineeimg"><a routerLink="/admin/menteelist" class="showmentees" style="text-decoration:none;"
+              (click)="onClickSideNav('Mentees')">Show All</a>
+            <div class="Ellipse-30">
+              <img src="/assets/group copy.png" alt="" class="menteslist">
+            </div>
+          </span>
+        </mat-card-title>
+
+      </mat-card-header>
+
+
+
+      <mat-card-content>
+
+        <div class="row">
+
+
+          <div class="Rectangle-Mentee-list col-md-5.5" *ngFor="let mentees of mentees?.data">
+            <!-- <span><img class="profile-Photo" src="{{ mentees?.profileImage}}"></span> -->
+            <span><img class="profile-Photo" src="assets/sid.jpeg"></span>
+            <span>
+              <span class="mentee-name">{{mentees?.employeeName|titlecase}}
+
+                <div class="format">
+                  <span class="emailsize">{{mentees?.email|titlecase}}<br>
+                    <span>{{mentees?.mobileNo}}</span>
+                  </span>
+                </div>
+
+              </span>
+            </span>
+          </div>
+
+
+
+        </div>
+
+      </mat-card-content>
+    </mat-card>
+
+
+
+  </div>
+
+
+
+  <!-- Task -->
+
+  <mat-card class="example-card2">
+    <mat-card-header>
+
+      <mat-card-title>Total Tasks
+        <span class="traineeimg"> <a routerLink="/admin/Task" class="showmentees1"
+            style="text-decoration:none; float: right;" (click)="onClickSideNav('Task')">Show All</a>
+
+        </span>
+      </mat-card-title>
+
+    </mat-card-header>
+
+    <mat-card-content class="scrollable-content">
+      <div class="Rectangle-198">
+        <div class="row">
+
+          <div class="Rectangle-2403">
+            <span class="span-num">{{tasks?.data.totalTask}}</span><br>
+            <span class="task-total">
+              TotalTasks
+            </span>
+          </div>
+          <div class="Rectangle-199">
+            <span class="span-num1">{{tasks?.data.completedTask}}</span><br>
+            <span class="completed">
+              Completed
+            </span>
+          </div>
+          <div class="Rectangle-200">
+            <span class="span-num2">{{tasks?.data.incompletedTask}}</span><br>
+            <span class="Pending">
+              Pending
+            </span>
+          </div>
+        </div>
+        <div>
+          <div class="assignment"> Mentees Assignments</div>
+          <div class="Rectangle-8" *ngFor="let uncompleted of tasks?.data?.incompletedTaskList">
+            <span class="BOOTSTRAP">{{uncompleted.subjectName|titlecase}}</span><br>
+            <span class="Sangeetha-Shekaran">Total Assignments-{{uncompleted.totalAssignmnet}}</span>
+            <div class="format-datebox">
+              <span class="Rectangle-2405">{{uncompleted.submissionDate}}</span>
+            </div>
+            <div class="format-subdate">
+              <span class="Submission-Date">Submission Date</span>
+            </div>
+          </div>
+
+          <div class="Rectangle-9" *ngFor="let completed of tasks?.data.submissionDate">
+            <span class="BOOTSTRAP">{{completed.subjectName}}</span><br>
+            <span class="Sangeetha-Shekaran">Total Assignments-{{completed.totalAssignmnet}}</span>
+            <div class="format-datebox">
+              <span class="Rectangle-2405">{{completed.submissionDate}}</span>
+            </div>
+            <div class="format-subdate">
+              <span class="Submission-Date">Submission-Date</span>
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+    </mat-card-content>
+
+  </mat-card>
+</div>

@@ -1,0 +1,33 @@
+<link rel="stylesheet" id="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="container" id="container">
+    <!-- <div class="message" *ngIf="menteesData.length===0"> No mentees assigned yet </div> -->
+    <div class="form" id="form">
+        <!-- <div class="message" *ngIf="menteesData.length===0"> Mentees not assigned </div> -->
+        <i class="fa fa-search" id="search"></i>
+        <input type="text" id="text" class="form-control form-input" placeholder="Search ..." [(ngModel)]="searchText"
+            autocomplete="on">
+        <div id="menteesData" *ngFor="let data of menteesData; index as i">
+            <span id="length">Total Mentees-{{menteesData.length}}</span>
+        </div>
+    </div>
+    <!-- <div class="message" *ngIf="menteesData.length === 0"> No mentees assigned yet </div> -->
+    <div class="row" id="row">
+        <!-- <div class="col-md-4"> -->
+        <div id="menteesData" class="rectangle-Mentees-Data" *ngFor="let data of menteesData | filter:searchText">
+            
+            <div class="profile-Image" id="profile"><img src="{{data.profileImage}}" alt="" class="profile" id="image">
+            </div>
+            <div class="mentee-name" id="name"><a (click)="viewProfile(data.email)" style="text-decoration:none ; color: black;" #hoverName
+            (mouseenter)="onMouseEnter(hoverName)" (mouseleave)="onMouseOut(hoverName)">{{data.mentee_name | titlecase }}</a></div>
+            <div class="mentee-email">{{data.email}}</div>
+            <div class="position" id="designation">{{data.designation}}</div>
+            <div class="rectangle-Location" id="location">
+                <span class="location" id="location">{{data.location}}</span>
+            </div>
+        </div>
+        <!-- </div> -->
+        <!-- (click)="viewProfile(data)" -->
+    </div>
+
+</div>

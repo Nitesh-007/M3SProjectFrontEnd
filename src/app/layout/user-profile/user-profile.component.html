@@ -1,0 +1,186 @@
+<mat-card class="container-fluid">
+    <div class="row">
+
+        <div class="col-3">
+            <mat-card class="example-card">
+
+                <mat-card-header>
+                    <mat-card-title-group>
+
+                        <mat-card-subtitle></mat-card-subtitle>
+                        <img mat-card-md-image src="/assets/sid.jpeg" class="picture">
+                    </mat-card-title-group>
+                </mat-card-header>
+                <div class="mat-title">
+                    <mat-card-title class="userName">{{userData?.employeeName|titlecase}}</mat-card-title>
+                    <mat-card-subtitle class="userID">{{userData?.employeeId}}</mat-card-subtitle>
+                </div>
+
+
+
+            </mat-card>
+        </div>
+        <div class="col-9">
+            <div class="row p-3">
+                <div class="form-group col-3">
+                    <label>Official Email</label>
+                    <label><b class="emailFont">{{userData?.email}}</b></label>
+                </div>
+                <div class="form-group col-3">
+                    <label>Mobile</label>
+                    <div><b>{{userData?.mobileNo}}</b></div>
+                </div>
+                <div class="form-group col-3">
+                    <label>Location</label>
+                    <div><b>{{userData?.location|titlecase}}</b></div>
+                </div>
+                <div class="form-group col-3">
+                    <label>Business Unit</label>
+                    <div><b>{{userData?.bussinessUnit|titlecase}}</b></div>
+                </div>
+
+                <div class="form-group col-3">
+                    <label>TechGroup</label>
+                    <div><b>{{userData?.techGroup|titlecase}}</b></div>
+                </div>
+
+                <div class="form-group col-3">
+                    <label>Employee Type</label>
+                    <div><b>{{userData?.employeeType|titlecase}}</b></div>
+                </div>
+                <div class="form-group col-3">
+                    <label>Reporting Manager</label>
+                    <div><b>{{userData?.reportingManager|titlecase}}</b></div>
+                </div>
+                <div class="form-group col-3">
+                    <label>Project </label>
+                    <div><b></b></div>
+                </div>
+                <div class="form-group col-3">
+                    <label>Date of Joining</label>
+                    <div><b>{{userData?.joiningDate |date:"shortDate"}}</b></div>
+
+                </div>
+                <div class="form-group col-3">
+                    <label>Date of Association</label>
+
+
+                    <div><b>{{userData?.associationDate |date:"shortDate"}}</b></div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+        <div class="Line-123"></div>
+        <div class="container">
+
+
+            <div class="row pl-3" *ngIf="userType === 'MENTOR' && currentUser.employeeType === 'ADMIN' ">
+
+                <label for="" (click)="sideNav.toggle()"> Assigned Trainee-{{assignedMentees?.length}}</label>
+                <button class="ml-auto" (click)="sideNav.toggle()">Assign Mentees</button>
+            </div>
+            <div class="row" *ngIf="assignedMentees?.length">
+                <div class="col-md-3 Rectangle-10" *ngFor="let item of assignedMentees ">
+                    <div class="entity-1">
+                        <span *ngIf="userType === 'MENTOR' && currentUser.employeeType === 'ADMIN' "> <button class="menubutton" (click)="unassigne(item.email)">
+                            <i class="bi bi-trash3-fill"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
+                            </svg>
+                           
+                        </button></span>
+                        <label>{{item.menteeName|titlecase}}</label> 
+                       
+
+                        <div><b>{{item.tech_group|titlecase}}</b></div>
+                        <img mat-card-md-image src="/assets/sid.jpeg" class="pic-1">
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <mat-drawer class="right-nav" #sideNav mode="side" opened="false" position='end'>
+
+        <!-- <div class="right-nav" #sideNav mode="side" opened="false" position='end'> -->
+
+
+
+
+
+        <!-- -----Right-navbar---- -->
+        <button class="btn button-new-task-create" (click)="sideNav.toggle()" mat-button>Assign Mentee</button>
+        <mat-card>
+
+            <div class="right-Rectangle">
+                <hr>
+                <form class="form-new-task">
+
+
+                    <mat-card-content>
+                        <div class="row Rectangle-8" *ngFor="let item of MenteeToAssignList ;let i=index">
+
+                            <div class="checkbox">
+                                <span>
+                                    <section class="example-section">
+                                        <mat-checkbox class="example-margin"
+                                            (change)="checkCheckBoxvalue($event)"
+                                            [value]="item.email"></mat-checkbox>
+
+                                    </section>
+
+                                </span>
+                            </div>
+
+
+                            <div class="col-1">
+
+                                <img mat-card-md-image src="/assets/sid.jpeg" class="pic-2">
+                            </div>
+
+                            <div class="col-7">
+                               
+                                <div class="Sangeetha-Shekaran"  >{{item.menteeName|titlecase}}</div>
+                                <span><div class="rectangle-Location">
+                                            <span class="location" *ngIf="item.length==null">{{item.location|titlecase}}</span>
+                                        </div></span>
+                                <div class="BOOTSTRAP" >{{item.employee_id}}</div><br>
+                                <div class="designation" >{{item.tech_group|titlecase}}</div> 
+                            </div>
+                            
+
+
+                        </div>
+
+                    </mat-card-content>
+
+
+                    <button type=" submit" class="btn-primary-1" (click)="sideNav.toggle()">Close</button>
+                    <button type="submit" class="btn btn-primary" (click)="submitForm()">Assign</button>
+                </form>
+            </div>
+        </mat-card>
+    <!-- </div> -->
+    </mat-drawer>
+
+
+
+
+
+</mat-card>

@@ -1,0 +1,417 @@
+<div class="BG_01" id="container">
+  <div class="container" id="container1">
+    <mat-tab-group animationDuration="20ms" class="table-striped" id="group" (selectedTabChange)="tabChanged($event)">
+      <mat-tab id="tab">
+        <ng-template mat-tab-label id="label">
+          <label id="all"> All <span id="length" class="number">{{dataSource.data.length}}</span></label>
+        </ng-template>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" id="table">
+
+          <!-- Checkbox Column -->
+          <ng-container matColumnDef="select">
+            <th mat-header-cell *matHeaderCellDef>
+              <mat-checkbox (change)="$event ? toggleAllRows() : null" 
+                [checked]="selection.hasValue() && isAllSelected()"
+                [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+              </mat-checkbox>
+            </th>
+            <td mat-cell *matCellDef="let row" >
+              <mat-checkbox (click)="$event.stopPropagation()"
+                (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)"
+                [aria-label]="checkboxLabel(row)">
+              </mat-checkbox>
+            </td>
+          </ng-container>
+
+          <!-- Task Id Column -->
+          <!-- <div class="Icon-ionic-md-arrow-dropup"></div> -->
+          <ng-container matColumnDef="taskID" id="container">
+            <th mat-header-cell *matHeaderCellDef id="header">Task ID</th>
+            <td mat-cell *matCellDef="let element" id="taskId">{{element?.taskId}} </td>
+          </ng-container>
+
+          <!-- Task Topic Column -->
+          <ng-container matColumnDef="taskTopic" id="container">
+            <th mat-header-cell *matHeaderCellDef id="topic"> Task Topic </th>
+            <td mat-cell *matCellDef="let element" id="taskName"> {{element?.taskName}} </td>
+          </ng-container>
+
+          <!-- Project Code Column -->
+          <ng-container matColumnDef="projectCode" id="container">
+            <th mat-header-cell *matHeaderCellDef id="headerCode"> Project Code </th>
+            <td mat-cell *matCellDef="let element" id="projectCode"> {{element?.projectCode}} </td>
+          </ng-container>
+
+          <!-- Start/End Date Column -->
+          <ng-container matColumnDef="startDate/endDate" id="container">
+            <th mat-header-cell *matHeaderCellDef id="startDate"> Start date / End Date </th>
+            <td mat-cell *matCellDef="let element" id="assignedDate"> {{element?.assignedDate}} -
+              {{element?.expectedSubmissionDate}}
+            </td>
+          </ng-container>
+
+          <!-- Completed On Column -->
+          <ng-container matColumnDef="completedOn" id="completedOn">
+            <th mat-header-cell *matHeaderCellDef id="header"> Completed On </th>
+            <td mat-cell *matCellDef="let element" id="actualSubmissionDate"> {{element?.actualSubmissionDate}} </td>
+          </ng-container>
+
+          <!-- Assignee Column -->
+          <ng-container matColumnDef="assignee" id="container">
+            <th mat-header-cell *matHeaderCellDef id="header"> Assignee </th>
+            <td mat-cell *matCellDef="let element" id="assignee"> {{element?.assignee}} </td>
+          </ng-container>
+
+          <!-- Status Column -->
+          <ng-container matColumnDef="status" id="container">
+            <th mat-header-cell *matHeaderCellDef id="header"> Status </th>
+            <td mat-cell *matCellDef="let element" id="cell">
+              <div id="status"
+                [ngClass]="{'statusCompleted':element?.taskStatusList === 'Completed','statusPending':element?.taskStatusList === 'Pending','statusSubmitted':element?.taskStatusList === 'Submitted', 'statusInProgress':element?.taskStatusList === 'In Progress'}"
+                class="status"> {{element?.taskStatusList}} </div>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="star" id="container">
+            <th mat-header-cell *matHeaderCellDef id="header"></th>
+            <td mat-cell *matCellDef="let element" id="cell">
+              <button [matMenuTriggerFor]="menu" id="button" aria-label="Example icon-button with a menu" class="icon">
+                <i class="bi bi-three-dots-vertical" id="three-dots">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                  </svg>
+                </i>
+              </button>
+              <mat-menu #menu="matMenu">
+
+                <button class="menubutton" id="menubutton" (click)="openDialogView( element)">
+                  <i class="bi bi-trash3-fill" id="fill"></i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                    <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                  </svg>
+                  <span style="margin: 10px;" id="View">View</span>
+                </button>
+
+                <button id="menubutton" class="menubutton" (click)="onEditTask( element)">
+                  <i class="bi bi-pencil-fill"></i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-pencil" viewBox="0 0 16 16">
+                    <path
+                      d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+                  </svg>
+                  <span style="margin: 10px;">Edit</span>
+                </button>
+
+                <button class="menubutton" id="menubutton" (click)="deleteTask(element?.taskId)">
+                  <i class="bi bi-trash3-fill" id="trash3"></i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-trash3" viewBox="0 0 16 16">
+                    <path
+                      d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
+                  </svg>
+                  <span id="deleteLabel" style="margin: 10px;">Delete</span>
+                </button>
+
+              </mat-menu>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns" id="header"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)" id="row">
+          </tr>
+        </table>
+        <p *ngIf="dataSource.data.length === 0" class="message">No data found</p>
+      </mat-tab>
+
+      <!-- Tab Completed task  -->
+      <mat-tab id="tab">
+        <ng-template mat-tab-label id="template">
+          <label id="completed"> Completed <span id="length" class="number">{{dataSource1.data.length}}</span></label>
+        </ng-template>
+        <table mat-table [dataSource]="dataSource1" class="mat-elevation-z8" id="table">
+
+          <!-- Checkbox Column -->
+          <ng-container matColumnDef="select">
+            <th mat-header-cell *matHeaderCellDef>
+              <mat-checkbox (change)="$event ? toggleAllRows1() : null"
+                [checked]="selection1.hasValue() && isAllSelect()"
+                [indeterminate]="selection1.hasValue() && !isAllSelect()" [aria-label]="checkboxLabel()">
+              </mat-checkbox>
+            </th>
+            <td mat-cell *matCellDef="let row">
+              <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection1.toggle(row) : null"
+                [checked]="selection1.isSelected(row)" [aria-label]="checkboxLabel(row)">
+              </mat-checkbox>
+            </td>
+          </ng-container>
+
+          <!-- Task Id Column -->
+          <ng-container matColumnDef="taskID">
+            <th mat-header-cell *matHeaderCellDef> Task ID</th>
+            <td mat-cell *matCellDef="let element "> {{element?.taskId}} </td>
+          </ng-container>
+
+          <!-- Task Topic Column -->
+          <ng-container matColumnDef="taskTopic">
+            <th mat-header-cell *matHeaderCellDef> Task Topic </th>
+            <td mat-cell *matCellDef="let element"> {{element?.taskName}} </td>
+          </ng-container>
+
+          <!-- Project Code Column -->
+          <ng-container matColumnDef="projectCode">
+            <th mat-header-cell *matHeaderCellDef> Project Code </th>
+            <td mat-cell *matCellDef="let element"> {{element?.projectCode}} </td>
+          </ng-container>
+
+          <!-- Start/End Date Column -->
+          <ng-container matColumnDef="startDate/endDate">
+            <th mat-header-cell *matHeaderCellDef> Start date / End Date </th>
+            <td mat-cell *matCellDef="let element"> {{element?.assignedDate}} - {{element?.expectedSubmissionDate}}
+            </td>
+          </ng-container>
+
+          <!-- Completed On Column -->
+          <ng-container matColumnDef="completedOn">
+            <th mat-header-cell *matHeaderCellDef> Completed On </th>
+            <td mat-cell *matCellDef="let element"> {{element?.actualSubmissionDate}} </td>
+          </ng-container>
+
+          <!-- Assignee Column -->
+          <ng-container matColumnDef="assignee">
+            <th mat-header-cell *matHeaderCellDef> Assignee </th>
+            <td mat-cell *matCellDef="let element"> {{element?.assignee}} </td>
+          </ng-container>
+
+          <!-- Status Column -->
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef> Status </th>
+            <td mat-cell *matCellDef="let element">
+              <div class="statusCompleted status"> {{element?.taskStatusList}} </div>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="star">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+              <button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" class="icon">
+                <i class="bi bi-three-dots-vertical">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                  </svg>
+                </i>
+              </button>
+              <mat-menu #menu="matMenu">
+
+                <button class="menubutton" (click)="openDialogView( element)">
+                  <i class="bi bi-trash3-fill"></i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                    <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                  </svg>
+                  <span style="margin: 10px;">View</span>
+                </button>
+
+                <button class="menubutton" (click)="onEditTask( element)">
+                  <i class="bi bi-pencil-fill"></i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-pencil" viewBox="0 0 16 16">
+                    <path
+                      d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+                  </svg>
+                  <span style="margin: 10px;">Edit</span>
+                </button>
+
+                <button class="menubutton" (click)="deleteTask(element?.taskId)">
+                  <i class="bi bi-trash3-fill"></i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-trash3" viewBox="0 0 16 16">
+                    <path
+                      d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
+                  </svg>
+                  <span style="margin: 10px;">Delete</span>
+                </button>
+
+              </mat-menu>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
+          </tr>
+        </table>
+        <p *ngIf="dataSource1.data.length === 0" class="message">No data found</p>
+      </mat-tab>
+
+      <!-- Tab Pending Task -->
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <label> Pending <span class="number">{{dataSource2.data.length}}</span></label>
+        </ng-template>
+        <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
+
+          <!-- Checkbox Column -->
+          <ng-container matColumnDef="select">
+            <th mat-header-cell *matHeaderCellDef>
+              <mat-checkbox (change)="$event ? toggleAllRows2() : null"
+                [checked]="selection2.hasValue() && isAllSelect1()"
+                [indeterminate]="selection2.hasValue() && !isAllSelect1()" [aria-label]="checkboxLabel()">
+              </mat-checkbox>
+            </th>
+            <td mat-cell *matCellDef="let row">
+              <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection2.toggle(row) : null"
+                [checked]="selection2.isSelected(row)" [aria-label]="checkboxLabel(row)">
+              </mat-checkbox>
+            </td>
+          </ng-container>
+
+          <!-- Task Id Column -->
+          <ng-container matColumnDef="taskID">
+            <th mat-header-cell *matHeaderCellDef> Task ID</th>
+            <td mat-cell *matCellDef="let element "> {{element?.taskId}} </td>
+          </ng-container>
+
+          <!-- Task Topic Column -->
+          <ng-container matColumnDef="taskTopic">
+            <th mat-header-cell *matHeaderCellDef> Task Topic </th>
+            <td mat-cell *matCellDef="let element"> {{element?.taskName}} </td>
+          </ng-container>
+
+          <!-- Project Code Column -->
+          <ng-container matColumnDef="projectCode">
+            <th mat-header-cell *matHeaderCellDef> Project Code </th>
+            <td mat-cell *matCellDef="let element"> {{element?.projectCode}} </td>
+          </ng-container>
+
+          <!-- Start/End Date Column -->
+          <ng-container matColumnDef="startDate/endDate">
+            <th mat-header-cell *matHeaderCellDef> Start date / End Date </th>
+            <td mat-cell *matCellDef="let element"> {{element?.assignedDate}} - {{element?.expectedSubmissionDate}}
+            </td>
+          </ng-container>
+
+          <!-- Completed On Column -->
+          <ng-container matColumnDef="completedOn">
+            <th mat-header-cell *matHeaderCellDef> Completed On </th>
+            <td mat-cell *matCellDef="let element"> {{element?.actualSubmissionDate}} </td>
+          </ng-container>
+
+          <!-- Assignee Column -->
+          <ng-container matColumnDef="assignee">
+            <th mat-header-cell *matHeaderCellDef> Assignee </th>
+            <td mat-cell *matCellDef="let element"> {{element?.assignee}} </td>
+          </ng-container>
+
+          <!-- Status Column -->
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef> Status </th>
+            <td mat-cell *matCellDef="let element">
+              <div [ngClass]="{'statusPending':element?.taskStatusList === 'Pending','statusSubmitted':element?.taskStatusList === 'Submitted', 'statusInProgress':element?.taskStatusList === 'In Progress'}"
+              class="statusPending status"> {{element?.taskStatusList}} </div>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="star">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+              <button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" class="icon">
+                <i class="bi bi-three-dots-vertical">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                  </svg>
+                </i>
+              </button>
+              <mat-menu #menu="matMenu">
+
+                <button class="menubutton" (click)="openDialogView( element)">
+                  <i class="bi bi-trash3-fill"></i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                    <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                  </svg>
+                  <span style="margin: 10px;">View</span>
+                </button>
+
+                <button class="menubutton" (click)="onEditTask( element)">
+                  <i class="bi bi-pencil-fill"></i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-pencil" viewBox="0 0 16 16">
+                    <path
+                      d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+                  </svg>
+                  <span style="margin: 10px;">Edit</span>
+                </button>
+
+                <button class="menubutton" (click)="deleteTask(element?.taskId)">
+                  <i class="bi bi-trash3-fill"></i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-trash3" viewBox="0 0 16 16">
+                    <path
+                      d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
+                  </svg>
+                  <span style="margin: 10px;">Delete</span>
+                </button>
+
+              </mat-menu>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
+          </tr>
+        </table>
+        <p *ngIf="dataSource2.data.length === 0" class="message">No data found</p>
+      </mat-tab>
+
+      <!-- delete, filter and new task -->
+      <mat-tab disabled>
+        <!-- <ng-container matColumnDef="select"> -->
+        <!-- <th mat-header-cell *matHeaderCellDef> -->
+        <ng-template mat-tab-label>
+
+          <!-- <mat-menu #menu="matMenu"> -->
+
+          <mat-form-field class="button-filter">
+            <mat-label>Filter</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Search .." #input>
+          </mat-form-field>
+
+          <!-- </mat-menu> -->
+
+          <button class="button-delete" [disabled]="" (click)="DeleteData()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-trash3"
+              viewBox="0 0 16 16">
+              <path
+                d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
+            </svg>
+          </button>
+
+          <button mat-button  class="btn button-new-task" (click)="openDialog()">New Task</button>
+
+          <!-- <button class="btn button-new-task" (click)="onNewTask(sideNav)" mat-button>New Task</button> -->
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
+    <div>
+      <mat-drawer class="right-nav" #sideNav mode="side" position='end'>
+
+        <!-- -----Right-navbar-newTask--- -->
+
+        <!-- <app-create-edit-task 
+          (onClosePopup)="onClose(sideNav)"></app-create-edit-task> -->
+      </mat-drawer>
+    </div>
+  </div>
+</div>

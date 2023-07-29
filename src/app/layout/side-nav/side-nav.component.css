@@ -1,0 +1,135 @@
+.example-container {
+    width: auto;
+
+    background-color: #f3f5f5;
+    
+    height: 85%;
+   
+    margin-top: 20px;
+    
+
+}
+
+::ng-deep .mat-drawer-content{
+    overflow-x: hidden !important;
+}
+
+/* .mat-drawer-content {
+     height: auto !important; 
+    overflow: hidden !important;
+} */
+
+/* .data{
+    margin-left: 212px;
+    overflow: hidden;
+} */
+
+.Dashboard {
+    width: 98px;
+    height: 21px;
+    /* margin: 0 20px 0 8px; */
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #007bff;
+}
+
+
+img.dashboard {
+    width: 18px;
+    height: 18px;
+    margin: -3px 7px 1px -1px;
+    object-fit: contain;
+}
+
+img.mentees {
+    width: 20.3px;
+    height: 17.1px;
+    margin: 8px 12.7px 10px 0;
+    object-fit: contain;
+}
+
+.Mentees {
+    width: 76px;
+    height: 21px;
+    
+
+    margin-left: 13px;
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #007bff;
+}
+
+.hover:hover{
+    cursor: pointer;
+    background-color: #e3f0ff;
+    color:#007bff;
+    margin-left: 10px;  
+}
+
+
+.Rectangle {
+    /* width: 184px; */
+    /* width: 170px; */
+    height: 57px;
+    margin: 20px 12px 10px 10px;
+    padding: 18px 26px 18px 27px;
+    border-radius: 12px;
+    /* background-color:blue */
+}
+
+img.task {
+    width: 20.3px;
+    height: 17.1px;
+    margin: 8px 12.7px 1px 0;
+    object-fit: contain;
+}
+
+
+.Task {
+
+    width: 76px;
+    height: 21px;
+   margin-left: 13px;
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #007bff;
+
+}
+
+.text-color{
+    color:#a0a0a0;
+}
+
+.text-color:hover{
+ color: #007bff;
+}
+
+/* mat-drawer div.active{
+    color:red
+    
+} */
+/* div a.active{
+    color:red !important;
+} */
+.active-list-item{
+    background-color: #007bff;
+    margin-left: 10px;
+}

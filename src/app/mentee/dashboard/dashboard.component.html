@@ -1,0 +1,94 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="d-flex">
+            <div class="tasks-wrraper1">
+                <h3 class="head1">Tasks</h3>
+                <div>
+                    <div class="d-flex">
+                        <div class="task task-total">
+                            <span class="span-num">{{taskSummary?.totalTask}}</span>
+                            <span class="task-label">Total Tasks</span>
+                        </div>
+                        <div class="task task-completed">
+                            <span class="span-num">{{taskSummary?.completedTask}}</span>
+                            <span class="task-label">Completed</span>
+                        </div>
+                        <div class="task task-pending">
+                            <span class="span-num">{{taskSummary?.incompletedTask}}</span>
+                            <span class="task-label">Pending</span>
+                        </div>
+                    </div>
+
+                    <div class="d-flex">
+                        <!-- mentee performance-->
+
+                        <div class="format2">
+                            <span class="Mentees-Performance">Mentees Performance</span>
+                            <div class="Rectangle-13">
+
+                                <div class="week">
+                                    <button mat-raised-button [ngClass]="{ 'button' : isValue == 1 }"
+                                        (click)="weeklyData()">WEEK</button>
+                                </div>
+                                <div class="month">
+                                    <button mat-raised-button [ngClass]="{ 'button' : isValue == 2 }"
+                                        (click)="monthlyData()">MONTH</button>
+                                </div>
+                                <div class="container">
+                                    <highcharts-chart [Highcharts]="highcharts" [options]="chartOptions"
+                                        style="width: 650px; height: 320px; display: block;">
+                                    </highcharts-chart>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ----tasks----- -->
+        <div class="d-flex">
+            <div class="tasks-wrraper">
+                <div class="recent-data">
+                    <span class="recent-text">Recent Activity
+                        <span class="time-logo"><img src="/assets/time.png" width="30px"></span>
+                    </span>
+                </div>
+
+                <div class="scroll">
+                    <div class="Rectangle-incomplete" *ngFor="let task of taskSummary?.IncompletedTaskList">
+                        <div class="data-task">
+                            <span class="pendingHeading">Pending</span><br>
+                            <span class="taskId">{{task.taskId}}</span><span class="taaskIdLaabel">Task ID</span>
+                            <div class="taskProjectCode">{{task.projectCode}}</div>
+                            <div class="format-datebox">
+                                <span class="Rectangle-date">{{task.submissionDate}}</span>
+                            </div>
+                        </div>
+                        <div class="format-subdate">
+                            <span class="Submission-Date">Submission-Date</span>
+                        </div>
+                    </div>
+
+                    <!-- -------------------------------------------------------- -->
+
+                    <div class="Rectangle-9" *ngFor="let task of taskSummary?.CompletedTaskList">
+                        <div class="data-task">
+                            <span class="completedHeading">Completed</span><br>
+                            <span class="taskId">{{task.taskId}}</span><span class="taaskIdLaabel">Task ID</span>
+                            <div class="taskProjectCode">{{task.projectCode}}</div>
+                            <div class="format-datebox">
+                                <span class="Rectangle-date">{{task.submissionDate}}</span>
+                            </div>
+                        </div>
+                        <div class="format-subdate">
+                            <span class="Submission-Date">Submission-Date</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

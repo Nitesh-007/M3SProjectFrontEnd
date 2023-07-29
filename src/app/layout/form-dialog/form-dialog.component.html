@@ -1,0 +1,172 @@
+<h1 mat-dialog-title>Fill User Details</h1>
+<div mat-dialog-content>
+
+    <form [formGroup]="addUserForm">
+
+
+        <mat-radio-group aria-label="Select an option" formControlName="employeeType">
+            <mat-radio-button value="MENTOR">MENTOR</mat-radio-button>
+            <mat-radio-button value="MENTEE">MENTEE</mat-radio-button>
+        </mat-radio-group>
+
+
+        <div class="row">
+            <div class="col">
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Employee Name</mat-label>
+                    <input matInput placeholder="Employee name" formControlName="employeeName" required (keypress)="allowAlphabetsAndSpaces($event)">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Employee ID</mat-label>
+                    <input matInput placeholder="Employee ID" formControlName="employeeId" required>
+                </mat-form-field>
+
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Official-Email</mat-label>
+                    <input matInput placeholder="official-Email" formControlName="email" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Mobile</mat-label>
+                    <input matInput placeholder="Mobile" formControlName="mobileNo" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Location</mat-label>
+                    <mat-select placeholder="" formControlName="location" required>
+
+                        <mat-option [value]="item" *ngFor="let item of location?.data">{{item}}</mat-option>
+
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Business Unit</mat-label>
+                    <mat-select placeholder="" formControlName="bussinessUnit" (selectionChange)="get_techGroup()"
+                        required>
+                        <mat-option [value]="item" *ngFor="let item of budetails?.data ">{{item}}</mat-option>
+
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Tech Group</mat-label>
+                    <mat-select placeholder="" formControlName="techGroup" required>
+                        <mat-option [value]="item" *ngFor="let item of techGroup?.data">{{item}}</mat-option>
+
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Designation</mat-label>
+                    <mat-select placeholder="" formControlName="designation" required>
+                        <mat-option [value]="item" *ngFor="let item of designation?.data ">{{item}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Reporting Manager</mat-label>
+                    <input matInput placeholder="Reporting Manager" formControlName="reportingManager" required>
+                </mat-form-field>
+
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Location Block</mat-label>
+                    <input matInput placeholder="Location Block" formControlName="locationBlock" required>
+                </mat-form-field>
+
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Date of Association</mat-label>
+                    <input matInput [matDatepicker]="picker1" formControlName="associationDate" required>
+
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+
+
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Date of joining</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="joiningDate" required>
+
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+
+                
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Notice Period</mat-label>
+                    <input matInput placeholder="Notice Period" formControlName="noticePeriod" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="w-23">
+                    <mat-label>Total-year-Experience</mat-label>
+                    <mat-select placeholder="" formControlName="totalYearExperience" required>
+                        <mat-option value="0">0</mat-option>
+                        <mat-option value="1">1</mat-option>
+                        <mat-option value="2">2</mat-option>
+                        <mat-option value="3">3</mat-option>
+                        <mat-option value="4">4</mat-option>
+                        <mat-option value="5">5</mat-option>
+                        <mat-option value="6">6</mat-option>
+                        <mat-option value="7">7</mat-option>
+                        <mat-option value="8">8</mat-option>
+                        <mat-option value="9">9</mat-option>
+                        <mat-option value="10">10</mat-option>
+                        <mat-option value="11">11</mat-option>
+                        <mat-option value="12">12</mat-option>
+                        <mat-option value="13">13</mat-option>
+                        <mat-option value="14">14</mat-option>
+                        <mat-option value="15">15</mat-option>
+                        <mat-option value="16">16</mat-option>
+                        <mat-option value="17">17</mat-option>
+                        <mat-option value="18">18</mat-option>
+                        <mat-option value="19">19</mat-option>
+                        <mat-option value="20">20</mat-option>
+                        <mat-option value="21">21</mat-option>
+                        <mat-option value="22">22</mat-option>
+                        <mat-option value="23">23</mat-option>
+                        <mat-option value="24">24</mat-option>
+                        <mat-option value="25">25</mat-option>
+                        <mat-option value="26">26</mat-option>
+                        <mat-option value="27">27</mat-option>
+                        <mat-option value="28">28</mat-option>
+                        <mat-option value="29">29</mat-option>
+                        <mat-option value="30">30</mat-option>
+                    </mat-select>
+
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="w-23">
+                    <mat-label>Total-Month-Experience</mat-label>
+                    <mat-select placeholder="" formControlName="totalMonthExperience" required>
+                        <mat-option value="1">1</mat-option>
+                        <mat-option value="2">2</mat-option>
+                        <mat-option value="3">3</mat-option>
+                        <mat-option value="4">4</mat-option>
+                        <mat-option value="5">5</mat-option>
+                        <mat-option value="6">6</mat-option>
+                        <mat-option value="7">7</mat-option>
+                        <mat-option value="8">8</mat-option>
+                        <mat-option value="9">9</mat-option>
+                        <mat-option value="10">10</mat-option>
+                        <mat-option value="11">11</mat-option>
+
+                    </mat-select>
+
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<div mat-dialog-action [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+    <button mat-raised-button color="Primary" style="margin-left: 10px;" (click)="userAdd()">Add</button>
+</div>

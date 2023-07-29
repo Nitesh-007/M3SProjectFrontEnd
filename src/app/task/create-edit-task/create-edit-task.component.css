@@ -1,0 +1,267 @@
+.form-new-task {
+    margin: 20px;
+}
+
+.taskId {
+    color: #007bff;
+}
+
+.taskIdLabel {
+    color: #000;
+    margin-left: -5px;
+    margin-bottom: 15px
+}
+
+.statusCompleted {
+    color: #2bc155;
+    background-color: #c1ffcb;
+}
+
+.statusPending {
+    background-color: #FFD580;
+    color: #fea137;
+}
+
+.status {
+    float: right;
+}
+
+.attachmentLabel {
+    margin: 7px;
+    border-radius: 10px;
+}
+
+.emailLabel {
+    color: #007bff;
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+.containerData {
+    margin-top: 10px;
+    margin-bottom: 26px;
+    background-color: aliceblue;
+    border-radius: 10px;
+}
+
+.borderPreview {
+    margin-top: 6px;
+    /* border: 1px solid #dee2e6; */
+    border-radius: 10px;
+}
+
+.removePreview {
+    /* position: absolute; */
+    cursor: pointer;
+    /* top: -10px; */
+    /* right: -10px; */
+    background-color: #007bff;
+    color: white;
+    margin-bottom: auto;
+    /* float: right; */
+    border-radius: 50%;
+    width: 20px;
+    height: auto;
+    text-align: center;
+}
+
+.fileNameLabel {
+    text-align: -webkit-center;
+    border: 1px solid #dee2e6;
+    border-radius: 7px;
+    margin-top: 7px;
+}
+
+.nul{
+    background-color: white;
+}
+
+.preview {
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    border: 2px solid #dee2e6;
+    margin-top: 15px;
+}
+
+
+element.style {
+    transform: none;
+}
+
+.new-task-create {
+    background-color: #ffffff;
+    margin-left: 5px;
+    color: #12101d;
+    width: 112px;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.editButton{
+    border: #e6f2ff solid 2px;
+    text-decoration: none;
+    font-size: 16px;
+    float: right;
+}
+
+.mat-dialog-container {
+    display: block;
+    padding: 24px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    overflow: auto;
+    outline: 0;
+    width: 100%;
+    /* height: 100%; */
+    min-height: inherit;
+    max-height: inherit;
+}
+
+.closeX {
+    float: right;
+    margin-right: 17px;
+    border: white;
+    background-color: white;
+    margin-top: -62px;
+}
+
+.commentdata {
+    margin-left: 40px;
+    margin-top: -8px;
+}
+
+.imageComment {
+    border-radius: 14px;
+    width: 30px;
+    height: 30px;
+    margin-top: inherit;
+}
+
+
+.form-row1 {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -5px;
+    margin-left: -5px;
+}
+
+.form {
+    position: relative;
+    width: 100%;
+    height: 90px;
+    border: 1px solid #d5d8db;
+    border-radius: 10px;
+}
+
+.form div {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: black;
+    font-family: Arial;
+    position: absolute;
+    top: 40%;
+}
+
+.buttonCancel {
+    margin-left: 336px;
+    margin-right: 15px;
+    width: 92px;
+    color: #333333;
+}
+
+.buttonCreate {
+    width: 92px;
+}
+
+.buttons {
+    margin-top: 105px;
+    float: right;
+}
+
+.textBrowse {
+    color: #007bff;
+}
+
+.form input {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    opacity: 0;
+    /* bottom: 40%; */
+    top: 40%;
+    z-index: 1;
+}
+
+.form button {
+    border-radius: 10px;
+    padding: 10px 20px;
+    background: #1950A3;
+    outline: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+}
+
+/* 
+div img {
+    position: relative;
+    top: 30px;
+    left: -10px;
+} */
+
+#fileName::before {
+    content: 'File Name:';
+}
+
+#fileName {
+    position: relative;
+    top: 30px;
+}
+
+.textFile {
+    color: black;
+}
+
+.topField{
+    margin-top: 10px;
+}
+
+.topField1{
+    margin-top: 10px;
+    margin-bottom: -22px;
+}
+
+.statusCompleted1 {
+    color: #2bc155;
+    font-weight: bold;
+    /* background-color: #c1ffcb; */
+}
+
+.statusSubmitted1{
+    color:royalblue;
+    font-weight: bold;
+    /* background-color: royalblue; */
+}
+
+.statusInProgress1 {
+    /* background-color:#94928e; */
+    font-weight: bold;
+    color: #94928e;
+}
+
+.statusPending1 {
+    /* background-color: #fea137; */
+    font-weight: bold;
+    color: #fea137;
+}
+
+.datePicker{
+    transform: translate(+0%, -102%);
+    float: right;
+}
+

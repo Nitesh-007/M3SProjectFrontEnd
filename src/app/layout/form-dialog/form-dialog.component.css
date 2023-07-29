@@ -1,0 +1,46 @@
+mat-form-field {
+    min-width: 150px;
+    max-width: 488px;
+    width: 100%;
+    margin-right: 20px;
+}
+
+.mat-radio-button~.mat-radio-button {
+    margin-left: 16px;
+    margin: 30px;
+}
+
+
+
+
+	.modal.right .modal-dialog {
+		position: fixed;
+		margin: auto;
+		width: 320px;
+		height: 100%;
+		-webkit-transform: translate3d(0%, 0, 0);
+		    -ms-transform: translate3d(0%, 0, 0);
+		     -o-transform: translate3d(0%, 0, 0);
+		        transform: translate3d(0%, 0, 0);
+	}
+
+ ::ng-deep .w-50 .mat-form-field-wrapper{
+width: 50% !important;
+}
+
+
+.w-23{
+	width: 23% !important;
+}
+
+::ng-deep .red-snackbar {
+	background:red ;
+	color:white;
+	font-weight: 500;
+  }
+
+  ::ng-deep .green-snackbar {
+	background:green;
+	color:white;
+	font-weight: 500;
+  }

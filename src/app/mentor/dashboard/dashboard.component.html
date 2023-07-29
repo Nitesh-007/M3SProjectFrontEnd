@@ -1,0 +1,99 @@
+<link href="https://fonts.cdnfonts.com/css/montserrat" rel="stylesheet" id="stylesheet">
+<div class="container-fluid">
+    <div class="row">
+        <div class="d-flex">
+            <div class="tasks-wrraper1">
+                <h3 class="head1" id="heading">Tasks</h3>
+                <div>
+                    <div class="d-flex">
+                        <div class="task task-total">
+                            <span class="span-num" id="totalTask">{{taskSummary?.totalTask}}</span>
+                            <span class="task-label" id="totalTaskLabel">Total Tasks</span>
+                        </div>
+                        <div class="task task-completed">
+                            <span class="span-num" id="completedTask">{{taskSummary?.completedTask}}</span>
+                            <span class="task-label" id="completedTaskLabel">Completed</span>
+                        </div>
+                        <div class="task task-pending">
+                            <span class="span-num" id="pendingTask">{{taskSummary?.pendingTask}}</span>
+                            <span class="task-label" id="pendingTaskLabel">Pending</span>
+                        </div>
+                        <a class="link" routerLink="/mentor/menteelist" id="routerLink">
+                            <div class="task mentees">
+                                <div class="span_num">
+                                    <span class="span-num num" id="assignedMentees">{{taskSummary?.assignedMentees?.data?.assigneeSize}}
+                                    </span>
+                                    <span class="mentees-group-circle">
+                                        <span class="circle" id="mentees-group-photo"><img src="/assets/group copy.png"
+                                                class="mentees-group"></span>
+                                    </span>
+                                </div>
+                                <span class="mentees-label" id="assignedMenteesLabel">Assigned Mentees</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="d-flex">
+                        <!-- mentee performance-->
+
+                        <div class="format2">
+                            <span class="Mentees-Performance" id="MenteesPerformance">Mentees Performance</span>
+                            <div class="Rectangle-13">
+
+
+                                <div class="week">
+                                    <button mat-raised-button [ngClass]="{ 'button' : isValue == 1 }" (click)="weeklyData()"  id="weeklyData">WEEK</button>
+                                </div>
+                                <div class="month">
+                                    <button mat-raised-button [ngClass]="{ 'button' : isValue == 2 }" (click)="monthlyData()"  id="monthlyData">MONTH</button>
+                                </div>
+                                <div class="container" id="highcharts">
+                                    <highcharts-chart [Highcharts]="highcharts" [options]="chartOptions"
+                                        style="width: 650px; height: 320px; display: block;">
+                                    </highcharts-chart>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ----tasks----- -->
+        <div class="d-flex" id="d-flex">
+            <div class="tasks-wrraper" id="tasks-wrraper">
+                <div class="recent-data" id="recent-data">
+                    <span class="recent-text" id="recent-text">Recent Activity
+                        <span class="time-logo" id="time-logo"><img src="/assets/time.png" width="30px"></span>
+                    </span>
+                </div>
+
+                <div class="scroll" id="scroll">
+                    <div class="Rectangle-incomplete" id="incomplete" *ngFor="let task of taskSummary?.incompleteTaskList">
+                        <span class="subject-name" id="subjectName">{{task.subjectName}}</span><br>
+                        <span class="mentee-name" id="menteeName">{{task.menteeName | titlecase }}</span>
+                        <div class="format-datebox" id="datebox">
+                            <span class="Rectangle-date" id="submissionDate">{{task.submissionDate}}</span>
+                        </div>
+                        <div class="format-subdate" id="subdate">
+                            <span class="Submission-Date" id="submissionDateLabel">Submission-Date</span>
+                        </div>
+                    </div>
+
+                    <div class="Rectangle-9" id="completeTaskList" *ngFor="let task of taskSummary?.completeTaskList">
+                        <span class="BOOTSTRAP" id="subjectName">{{task.subjectName}}</span><br>
+                        <span class="Sangeetha-Shekaran" id="menteeName">{{task.menteeName | titlecase }}</span>
+                        <div class="format-datebox" id="datebox">
+                            <span class="Rectangle-date" id="date">{{task.submissionDate}}</span>
+                        </div>
+                        <div class="format-subdate" id="subdate">
+                            <span class="Submission-Date" id="submission">Submission-Date</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

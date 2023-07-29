@@ -1,0 +1,109 @@
+.form {
+  position: relative;
+}
+
+.form .fa-search {
+  position: absolute;
+  top: 12px;
+  left: 21px;
+  size: 10px;
+  color: #7e7e7e;
+}
+
+.message {
+  text-align: center;
+  color: darkred;
+  font-size: 20px;
+  margin-top: 90px;
+  background-color: lightsteelblue;
+}
+
+.form span {
+  position: absolute;
+  right: 17px;
+  top: 13px;
+}
+
+.left-pan {
+  padding-left: 7px;
+}
+
+.left-pan i {
+  padding-left: 10px;
+}
+
+.form-input {
+  height: 40px;
+  width: 230px;
+  text-indent: 33px;
+  border-radius: 10px;
+  margin-top: 15px;
+  margin-left: 5px;
+}
+
+.form-input:focus {
+  box-shadow: none;
+  border: none;
+}
+
+.rectangle-Mentees-Data {
+  width: 220px;
+  height: 263px;
+  margin: 20px;
+  border-radius: 22px;
+  box-shadow: 0 8px 40px 0 rgba(76, 76, 76, 0.11);
+  background-color: #fff;
+}
+
+.profile-Image .profile {
+  width: 80px;
+  height: 80px;
+  margin: 22px 0px 0px 70px;
+  border-radius: 80px;
+}
+
+.mentee-name {
+  font-size: 16px;
+  font-family: Montserrat;
+  font-weight: bold;
+  text-align: center;
+  padding: 12px 0px 0px 0px;
+  /* margin: 8px 0px 0px 68px; */
+}
+
+.mentee-email {
+  font-size: 12px;
+  font-family: Montserrat;
+  font-weight: 700;
+  color: black;
+  text-align: center;
+  margin: 1px 0px 9px 0px;
+}
+
+.position {
+  color: #b6b6b6;
+  font-family: Montserrat;
+  text-align: center;
+  font-weight: bold;
+  /* margin: 10px 0px 0px 80px; */
+}
+
+.rectangle-Location {
+  width: 160px;
+  padding: 10px;
+  margin: 15px 10px 0px 30px;
+  border-radius: 20px;
+  text-align: center;
+  background-color: #e8fcef;
+}
+
+.location {
+  text-align: center;
+  font-size: 16px;
+  color: #0ae155;
+}
+
+a:hover {
+  color: blue;
+  cursor: pointer;
+}

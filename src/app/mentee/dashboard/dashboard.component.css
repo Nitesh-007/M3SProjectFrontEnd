@@ -1,0 +1,253 @@
+.head1 {
+    font-size: 14px;
+    margin: 15px;
+    color:#030303;
+    font-family:monstserrat;
+  }
+  
+  .tasks-wrraper1 {
+    /* width: auto; */
+    height: 682px;
+    margin: 5px;
+    border-radius: 30px;
+    border: solid 1px #ececec;
+    background-color: #fff;
+  }
+  
+  .task-completed{
+    background-color: #c1ffcb;
+    color: #079a24;
+  }
+  
+  .task-completed .task-label{
+    color: #555555;
+    font-size: 17px;
+    font-family: Montserrat;
+    margin-right: auto;
+  }
+  
+  .task-pending{
+    /* background-color: #ffe8c3; */
+    background-color: #fdd4da; 
+    color: #ff0000;
+  }
+  
+  .task-pending .task-label{
+    font-size: 17px;
+    font-family: Montserrat;
+    color: #555555;
+    margin-right: auto;
+  
+  }
+  
+  
+  .task-total{
+    background-color: #fff5c3;
+    color: #ff9d00;
+  }
+  
+  .task-total .task-label{
+    color: #555555;
+    font-size: 17px;
+    font-family: Montserrat;
+    margin-right: auto;
+  }
+  
+  .task {
+    height: 126px;
+    margin: 0px 9px 0px 9px;
+    padding: 30px;
+    border-radius: 17px;
+    width: 213px;
+    display: inline-grid;
+    text-align: center;
+  }
+  
+  .num{
+    color:#030303
+  }
+  
+  .span-num {
+    font-family: Montserrat;
+    font-weight: bold;
+    font-size: 45px;
+    margin-right: auto;
+    margin-bottom: 3px;
+    line-height: normal;
+    letter-spacing: normal;
+  }
+  /* //2nd border...... */
+  
+  .scroll{
+    overflow: scroll;
+    height: 580px;
+    margin-top: 12px;
+    border-radius: 20px;
+  }
+  
+  .recent-text{
+    margin: 10px 0px 0px 8px;
+    font-size: 22px;
+    font-weight: bold;
+  }
+  
+  .recent-data{
+    margin-top: 17px;
+  }
+  
+  .time-logo {
+    margin-left: 149px; 
+  }
+  
+  .tasks-wrraper {
+    width: 380px;
+    height: 680px;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 30px;
+    border: solid 1px #ececec;
+    background-color: #fff;
+  }
+  
+  .Rectangle-incomplete {
+    width: auto;
+    height: 78px;
+    margin: 10px 0px 0px 0px;
+    padding: 18px 0px 0px 20px;
+    border-radius: 17px;
+    box-shadow: 0 4px 60px 0 rgba(117, 117, 117, 0.1);
+    border: solid 1px #f0f0f0;
+    background-color: #ffe0e0;
+  }
+
+  .pendingHeading{
+    font-size: 14px;
+    color: #ff0000;
+    font-family: Montserrat;
+    font-weight: 300;
+  }
+  
+  .completedHeading {
+    font-size: 14px;
+    color: #079a24;
+    font-family: Montserrat;
+    font-weight: 300;
+  }
+  
+  .taskId {
+    font-family: Montserrat;
+    font-size: 14px;
+    color: #2d2d2d;
+  }
+
+  .taaskIdLaabel{
+    color:#666;
+    font-size: 14px;
+    margin-left: 11px;
+  }
+
+  .taskProjectCode{
+    color:#333;
+    font-family: Montserrat;
+  }
+
+  .data-task{
+    margin-top: -13px;
+  }
+  
+  .format-datebox {
+    transform: translate(+6%, -248%);
+  }
+  .Rectangle-date{
+    width: 95px;
+    height: 55px;
+    margin: 0px 12px 6px 172px;
+    padding: 12px 19px 8px 18px;
+    border-radius: 13px;
+    background-color: #fff;
+  }
+  
+  .format-subdate {
+    transform: translate(+6%, -200%);
+  }
+  .Submission-Date {
+    margin: 0px 0px 0px 180px;
+    font-family: Montserrat;
+    font-size: 15px;
+    color: #898989;
+  }
+  
+  .Rectangle-9 {
+    width: auto;
+    height: 78px;
+    margin: 10px 0px 0px 0px;
+    padding: 18px 0px 0px 20px;
+    border-radius: 17px;
+    box-shadow: 0 4px 60px 0 rgba(117, 117, 117, 0.1);
+    border: solid 1px #f0f0f0;
+    background-color: #eafde8;
+  }
+  
+  /* //3rd border...... */
+  
+  .Rectangle-13 {
+    /* width: 690px; */
+    height: 420px;
+    margin: 20px 0px 0px 8px;
+    border-radius: 30px;
+    border: solid 1px #ececec;
+    background-color: #fff;
+  }
+  
+  .Mentees-Performance {
+    font-size: 14px;
+    margin: 12px;
+    color: #030303;
+  }
+  
+  .format2 {
+    transform: translate(+0%, 5%);
+  
+  }
+  
+  .example-card {
+    max-width: 460px;
+    margin: 50px 0px 0px 20px;
+    border-radius: 30px;
+  }
+  
+  /* .mat-card-actions {
+    margin:-55px -8px 0px 49px;
+    padding: 8px 0;
+  } */
+  
+  .week{
+  margin:33px 0px 20px 460px; 
+  }
+  .button{
+    cursor: pointer;
+    background-color: #007bff;
+    color: #eafde8;
+    border-radius: 10px;
+  }
+  .month{
+  margin:-56px 0px 20px 560px; 
+  }
+  
+  #chart-gauge, #chart-pie, #chart-column, #chart-line {
+  display: block;
+  min-width: 150px;
+  max-width: 400px;
+  height: 200px;
+  margin: 0 auto;
+  }
+  
+  .dropdown{
+  border-radius: 2px;
+  margin: 20px 0px 20px 190px;
+  }
+  
+  .example-button-row button,
+  .example-button-row a {
+  margin: -10px 0px 0px 8px;
+  }

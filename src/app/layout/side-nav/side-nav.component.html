@@ -1,0 +1,102 @@
+<!-- Admin sidenav -->
+<mat-drawer-container class="example-container" *ngIf="utype==='ADMIN'">
+   <mat-drawer mode="side" opened>
+      <div class="Rectangle hover  " #rectangle routerLink="/admin/dashboard"  routerLinkActive="active-list-item"   (click)="onClickSideNav('Dashboard')">
+         <img src="/assets/dashboard.png" class="dashboard">
+         <span class="Dashboard" (click)="onClickSideNav('Dashboard')">
+            <a  class="text-color "  style="text-decoration:none;" >Dashboard</a>
+         </span>
+      </div>
+
+      <div class="Rectangle hover " routerLink="/admin/mentorlist" routerLinkActive="active-list-item"(click)="onClickSideNav('Mentor')">
+         <img src="/assets/mentees.png" class="dashboard">
+         <span class="Mentees" >
+            <a class="text-color"  style="text-decoration:none;">Mentors</a>
+         </span>
+      </div>
+
+      <div class="Rectangle hover" routerLink="/admin/Task" routerLinkActive="active-list-item" (click)="onClickSideNav('Task')">
+         <img src="/assets/Tasks.png" class="dashboard">
+         <span class="Task" >
+            <a  class="text-color"  style="text-decoration:none;">Tasks</a>
+         </span>
+      </div>
+
+      <div class="Rectangle hover" (click)="onClickSideNav('Mentees')" routerLink="/admin/menteelist" routerLinkActive="active-list-item">
+
+         <img src="/assets/mentees.png" class="dashboard">
+         <span class="Mentees">
+            <a class="text-color"  style="text-decoration:none;">Mentees</a>
+         </span>
+      </div>
+   </mat-drawer>
+  
+   <router-outlet></router-outlet>
+</mat-drawer-container>
+
+
+<!-- Mentor sideNav -->
+<mat-drawer-container class="example-container" *ngIf="utype=='MENTOR'">
+   <mat-drawer mode="side" opened >
+      <div class="Rectangle hover" (click)="onClickSideNav('Dashboard')"  routerLink="/mentor/dashboard" routerLinkActive="active-list-item">
+         <img src="/assets/dashboard.png" class="dashboard">
+         <span class="Dashboard">
+            <a  class="text-color"  style="text-decoration:none; " >Dashboard</a>
+
+         </span>
+      </div>
+
+
+
+      <div class="Rectangle hover" (click)="onClickSideNav('Mentees')" routerLink="/mentor/menteelist" routerLinkActive="active-list-item">
+
+         <img src="/assets/mentees.png" class="dashboard">
+         <span class="Mentees">
+            <a class="text-color"  style="text-decoration:none;">Mentees</a>
+         </span>
+      </div>
+      <div class="Rectangle hover" (click)="onClickSideNav('Task')" routerLink="/mentor/taskreview" routerLinkActive="active-list-item">
+
+         <img src="/assets/Tasks.png" class="dashboard">
+         <span class="Task">
+            <a class="text-color"  style="text-decoration:none;">Task</a>
+         </span>
+      </div>
+
+   </mat-drawer>
+   <router-outlet></router-outlet>
+
+
+
+
+</mat-drawer-container>
+
+
+
+<!-- mentee sidenav -->
+<mat-drawer-container class="example-container" *ngIf="utype=='MENTEE'">
+
+   <mat-drawer mode="side" opened>
+      <div class="Rectangle hover" (click)="onClickSideNav('Dashboard')" routerLink="/mentee/dashboard"  routerLinkActive="active-list-item" >
+         <img src="/assets/dashboard.png" class="dashboard">
+         <span class="Dashboard">
+            <a class="text-color"  style="text-decoration:none;">Dashboard</a>
+
+         </span>
+      </div>
+
+      <div class="Rectangle hover" (click)="onClickSideNav('Task')" routerLink="/mentee/taskview" routerLinkActive="active-list-item" >
+
+         <img src="/assets/Tasks.png" class="">
+         <span class="Task">
+            <a class="text-color" style="text-decoration:none;">Task</a>
+         </span>
+      </div>
+
+   </mat-drawer>
+   <router-outlet></router-outlet>
+
+
+
+
+</mat-drawer-container>

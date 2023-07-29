@@ -1,0 +1,9 @@
+::ng-deep .green-snackbar {
+    background: green;
+    color: white;
+    font-weight: 500;
+}
+
+button {
+    margin-right: 8px;
+  }

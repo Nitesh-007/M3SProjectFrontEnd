@@ -1,0 +1,379 @@
+.userName {
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 5px;
+  text-align: center;
+}
+
+.userID {
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 14px;
+  padding-left: 3px;
+  text-align: center;
+}
+
+
+
+.ml-auto {
+  float: left;
+  margin-right: 20px;
+}
+
+
+
+.example-card {
+  width: 240px;
+  height: 240px;
+  margin: 14px 47.5px 143px -2px;
+  padding: 17px 14px 48px 76px;
+  border-radius: 25px;
+  background-color: #f3f5f5;
+  padding: 33px;
+}
+
+.container-fluid {
+  width: -webkit-fill-available;
+  /* height: 948px; */
+  margin: 29px 30px 10px;
+  /* padding: 21px 45.5px 249px 20px; */
+  border-radius: 16px;
+  border: solid 1px #ecedee;
+  background-color: #fff;
+}
+
+.picture {
+  border-radius: 61px;
+  /* padding: 0px;
+      margin: -11px */
+}
+
+/* .mat-title {
+  padding: 28px;
+} */
+
+/* .container-2 {
+    display: flex;
+    align-items: center;
+    justify-content: center
+  } */
+
+.img {
+  max-width: 75%;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.image {
+  flex-basis: 20%;
+  margin-top: 20px;
+
+}
+
+.text h1 {
+  padding-left: 1px;
+  margin-left: 1px;
+  font-size: 20px;
+  margin-top: 80px;
+}
+
+.border1 {
+  border: 22px solid black;
+  padding-left: 22px;
+  padding-right: 22px;
+  border-width: 22px;
+}
+
+.btn {
+  padding: 2px;
+  margin-right: 12px;
+  margin-left: 42px;
+}
+
+.btn-1 {
+  background-color: gray;
+  font-size: 20px;
+
+}
+
+.btn-2 {
+  background-color: aqua;
+  font-size: 20px;
+
+}
+
+.btn-3 {
+  background-color: red;
+  font-size: 20px;
+
+}
+
+.Line-123 {
+  width: -webkit-fill-available;
+  height: 1px;
+  margin: 0px 0 33.5px 26.5px;
+  background-color: #e3e3eb;
+  /* margin-top: 26px; */
+}
+
+.Assigned-Trainee-5 {
+  width: 181px;
+  height: 22px;
+  /* margin: -21.5px 124px 31.5px 29.5px; */
+  font-family: Montserrat;
+  font-size: 18px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.22;
+  letter-spacing: normal;
+  text-align: left;
+  color: #030303;
+}
+
+.form-group-col-1 {
+  padding-left: 66px;
+
+}
+
+.pic-1 {
+  border-radius: 76px;
+  padding: 0px;
+  margin: -12px;
+  height: 44px;
+  width: 46px;
+  margin: -72.5px 0px 0px -47px;
+}
+
+.entity-1 {
+  padding-left: 44px;
+}
+
+.scroll {
+  overflow: scroll;
+  height: 580px;
+  margin-top: 12px;
+  border-radius: 20px;
+}
+
+/* .Rectangle-incomplete {
+    width: auto;
+    height: 78px;
+    margin: -1px 6px 2px 6px; */
+/* padding: 18px 0px 0px 20px; -----------------------*/
+/* border-radius: 10px; */
+/* box-shadow: 0 4px 60px 0 rgb(117 117 117 / 10%);------------------------ */
+/* border: solid 1px #f0f0f0;
+    background-color: white;
+  }
+  .subject-name {
+    font-size: 14px;
+    color: #2d2d2d;
+  }
+  .mentee-name {
+    margin: 10px 0px 0px 0px;
+    font-family: Montserrat;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .format-datebox {
+    transform: translate(+13%, -160%);
+  }
+  .Rectangle-date{
+   
+    margin: 0px 12px 6px 172px;
+    padding: 12px 61px 11px 26px;;
+    border-radius: 13px;
+    background-color: #e8fcef;
+  }
+  .format-subdate {
+    transform: translate(+0%, -140%);
+  }
+  .Submission-Date {
+    margin: 0px 0px 0px 180px;
+    font-family: Montserrat;
+    font-size: 15px;
+    color: #898989;
+  }
+
+  .right-Rectangle {
+    width: 355px;
+    height: 900px;
+   
+    border-radius: 10px;
+    background-color: #f7f7f7;
+  } */
+
+
+.Rectangle-8 {
+  width: 500px;
+  height: auto;
+  margin: 5px 0px 0px 0px;
+  padding: 15px 0px 0px 15px;
+  border-radius: 17px;
+  box-shadow: 0 4px 60px 0 rgb(117 117 117 / 10%);
+  border: solid 1px #f0f0f0;
+
+}
+
+.BOOTSTRAP {
+  margin: 0px 0px 0px 43px;
+  font-size: 14px;
+  color: #2d2d2d;
+  margin-top: -7px;
+  color: #007bff;
+}
+
+.Sangeetha-Shekaran {
+
+  margin: -8px 0px 0px 42px;
+  padding: 0px 0px 0px 0px;
+  font-family: Montserrat;
+  font-size: 14px;
+  color: #333;
+}
+
+/* .format-datebox {
+  } */
+/* .Rectangle-2405 {
+    
+    margin: 0px 12px 6px 371px;
+    padding: 12px 19px 8px 18px;
+    border-radius: 13px;
+    background-color: #fff;
+  } */
+
+.format-subdate {
+  transform: translate(+0%, -140%);
+}
+
+.Submission-Date {
+  margin: 20px 0px 0px 355px;
+  font-family: Montserrat;
+  font-size: 15px;
+  color: #898989;
+}
+
+.Rectangle-9 {
+  width: 500px;
+  height: 78px;
+  margin: 5px 0px 0px 0px;
+  padding: 18px 0px 0px 20px;
+  border-radius: 17px;
+  box-shadow: 0 4px 60px 0 rgba(117, 117, 117, 0.1);
+  border: solid 1px #f0f0f0;
+  background-color: white;
+}
+
+.rectangle-Location {
+  width: 135px;
+  height: 40px;
+  padding: 9px;
+  float: right;
+  margin-right: -135px;
+  margin-bottom: 17px;
+  border-radius: 20px;
+  box-shadow: 0 8px 40px 0 rgb(76 76 76 / 11%);
+  background-color: #e8fcef;
+}
+
+.location {
+  margin: 0px 0px 0px 20px;
+  font-size: 16px;
+  color: #0ae155;
+}
+
+.entity-2 {
+  padding-left: 44px;
+}
+
+.btn-primary-1 {
+  background-color: white;
+
+}
+
+.pic-2 {
+  border-radius: 76px;
+
+  margin-left: 7px;
+  height: 44px;
+  width: 46px;
+}
+
+.designation {
+  margin: -19.5px 0px 0px 42px;
+  padding: 0px 0px 0px 0px;
+  font-family: Montserrat;
+  font-size: 14px;
+  color: #333;
+
+}
+
+.style {
+  height: 24px;
+}
+
+::ng-deep .red-snackbar {
+  background: red;
+  color: white;
+  font-weight: 500;
+}
+
+::ng-deep .green-snackbar {
+  background: green;
+  color: white;
+  font-weight: 500;
+}
+
+
+.example-section {
+  margin-left: 2px;
+}
+
+
+.menubutton {
+  width: 30px;
+  max-height: 50px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: none;
+  -webkit-tap-highlight-color: transparent;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  line-height: 29px;
+
+  padding: 0 5px;
+  text-align: left;
+  text-decoration: none;
+
+  position: relative;
+  margin-left: 168px;
+}
+
+
+.Rectangle-10 {
+  background-color: #f0f0f0;
+  width: 500px;
+  height: auto;
+  margin: 5px 5px 0px 10px;
+  padding: 15px 0px 0px 15px;
+  border-radius: 17px;
+  box-shadow: 0 4px 60px 0 rgb(117 117 117 / 10%);
+  border: solid 1px #f0f0f0;
+}
+
+.checkbox {
+  margin-right: 0px;
+}
+
+.emailFont {
+  font-size: 12px;
+}

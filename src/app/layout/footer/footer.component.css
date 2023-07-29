@@ -1,0 +1,32 @@
+.example-spacer {
+  flex: 1 1 auto;
+  background-color: transparent;
+}
+
+
+
+.footer {
+  padding-left: 586px;
+  font-family: Montserrat;
+  font-size: 10px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: black;
+  background-color: transparent;
+
+}
+
+
+
+
+
+
+.footertool {
+  height: 1px;
+  margin-top: 5px;
+  background-color: transparent;
+}

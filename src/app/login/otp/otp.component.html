@@ -1,0 +1,108 @@
+<!-- left-side -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="leftcard col-6">
+      <div class="VVDN-Mentor-Mentee-Management-System">
+        <span class="text-style-1">VVDN</span>
+        <span class="text-style-2"></span>
+        Mentor Mentee Management System
+      </div>
+      <img src="/assets/shadow.png" alt="" class="leftpic ">
+    </div>
+
+    <!-- right side  -->
+
+    <div class="col-6">
+      <mat-card class="example-card">
+
+        <img mat-card-image src="/assets/vvdnlogo.png" alt="" class="logo">
+        <mat-card-content class="login">
+          <span class="VVDN-Mentor-Mentee-Management-System-1">
+            <span class="text-style-1">
+              <h1 class="Enter-otp">Enter OTP</h1>
+            </span>
+            <span class="message">4 digits code has been sent to your registered
+              <pre class="message-2">Email ID</pre>
+            </span>
+          </span>
+        </mat-card-content>
+
+        <!-- otp -field -->
+        <!-- 1 -->
+        <span class="input_field">
+          <div class="row">
+            <form autocomplete="off" ngSubmit="onSubmit()" class="form-inline ml-5" [formGroup]="otpForm">
+              <div class="m-2">
+                <input type="text" #txt1 maxlength="1" class="box_1" (keyup)="move($event,'',txt1,txt2)"
+                  formControlName="field1" required>
+               
+              </div>
+
+              <!-- 2 field -->
+              <div class="m-2">
+                <input type="text" #txt2 maxlength="1" class="box_1" (keyup)="move($event,txt1,txt2,txt3)"
+                  formControlName="field2" required>
+                <!-- <mat-error *ngIf="formControl.field2.invalid &&(formControl.field2.dirty || formControl.field2.touched)"
+                  class="form-text text-danger"> -->
+                <!-- <div *ngIf="formControl.field2.errors?.['pattern']">
+                  Invalid otp
+                </div> -->
+                <!-- </mat-error> -->
+              </div>
+
+              <!-- 3 field -->
+              <div class="m-2">
+                <input type="text" #txt3 maxlength="1" class="box_1" (keyup)="move($event,txt2,txt3,txt4)"
+                  formControlName="field3" required>
+                <!-- <mat-error *ngIf="formControl.field3.invalid &&(formControl.field3.dirty || formControl.field3.touched)"
+                  class="form-text text-danger"> -->
+                <!-- <div *ngIf="formControl.field3.errors?.['pattern']">
+                  Invalid otp
+                </div> -->
+                <!-- </mat-error> -->
+              </div>
+
+              <!-- 4 field -->
+              <div class="m-2">
+                <input class=box_4 type="text" #txt4 maxlength="1" class="box_1" (keyup)="move($event,txt3,txt4,'')"
+                  formControlName="field4" required>
+                <!-- <mat-error *ngIf="formControl.field4.invalid &&(formControl.field4.dirty || formControl.field4.touched)"
+                  class="form-text text-danger"> -->
+                <!-- <div *ngIf="formControl.field4.errors?.['pattern']">
+                  Invalid otp
+                </div> -->
+                <!-- </mat-error> -->
+              </div>
+            </form>
+          </div>
+          <div class="ml-4 pl-3 row">
+            <mat-error *ngIf="formControl.field1.invalid &&(formControl.field1.dirty || formControl.field1.touched)"
+            class="form-text text-danger mt-0">
+
+            <label class="errorMsg"
+              *ngIf="formControl.field1.errors?.['pattern'] || formControl.field2.errors?.['pattern'] || formControl.field3.errors?.['pattern'] || formControl.field4.errors?.['pattern']">
+              Invalid otp
+            </label>
+          
+          </mat-error>
+          </div>
+        </span>
+
+        <!-- verify-field -->
+        <div class="example-button-row mt-4">
+          <button class="send_btn" (click)="userotp()">Verify</button><br>
+          <p class="bottom"><a class="resend" (click)="resendOtp()"
+             #hoverName
+            (mouseenter)="onMouseEnter(hoverName)"
+            (mouseleave)="onMouseOut(hoverName)">Resend code</a></p>
+
+        </div>
+
+
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+<!-- </mat-grid-list> -->
+<router-outlet></router-outlet>

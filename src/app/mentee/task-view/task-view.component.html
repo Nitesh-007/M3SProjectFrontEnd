@@ -1,0 +1,294 @@
+<div class="BG_01">
+  <div class="container">
+    <mat-tab-group animationDuration="20ms" class="table-striped">
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <label> All <span class="number">{{dataSource.data.length}}</span></label>
+        </ng-template>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+          <!-- Task Id Column -->
+
+          <ng-container matColumnDef="taskID">
+            <th mat-header-cell *matHeaderCellDef>Task ID</th>
+            <td mat-cell *matCellDef="let element ">{{element?.taskId}} </td>
+          </ng-container>
+
+          <!-- Task Topic Column -->
+          <ng-container matColumnDef="taskTopic">
+            <th mat-header-cell *matHeaderCellDef> Task Topic </th>
+            <td mat-cell *matCellDef="let element"> {{element?.taskTopic}} </td>
+          </ng-container>
+
+          <!-- Project Code Column -->
+          <ng-container matColumnDef="projectCode">
+            <th mat-header-cell *matHeaderCellDef> Project Code </th>
+            <td mat-cell *matCellDef="let element"> {{element?.projectCode}} </td>
+          </ng-container>
+
+          <!-- Start/End Date Column -->
+          <ng-container matColumnDef="startDate/endDate">
+            <th mat-header-cell *matHeaderCellDef> Start date / End Date </th>
+            <td mat-cell *matCellDef="let element"> {{element?.startDate}} - {{element?.endDate}}
+            </td>
+          </ng-container>
+
+          <!-- Completed On Column -->
+          <ng-container matColumnDef="completedOn">
+            <th mat-header-cell *matHeaderCellDef> Completed On </th>
+            <td mat-cell *matCellDef="let element"> {{element?.completedOn}} </td>
+          </ng-container>
+
+          <!-- Assignee Column -->
+          <ng-container matColumnDef="reporter">
+            <th mat-header-cell *matHeaderCellDef> Reporter </th>
+            <td mat-cell *matCellDef="let element"> {{element?.reporter}} </td>
+          </ng-container>
+
+          <!-- Status Column -->
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef> Status </th>
+            <td mat-cell *matCellDef="let element">
+              <div
+              [ngClass]="{'statusCompleted':element?.status === 'Completed','statusPending':element?.status === 'Pending','statusSubmitted':element?.status === 'Submitted', 'statusInProgress':element?.status === 'In Progress'}"
+              class="status"> {{element?.status}} </div>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="star" class="box">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element" >
+              <button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" class="icon">
+                <i class="bi bi-three-dots-vertical">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                  </svg>
+                </i>
+              </button>
+              <mat-menu #menu="matMenu">
+
+                <button class="menubutton" (click)="onViewTask(element)">
+                  <i class="bi bi-trash3-fill"></i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                    <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                  </svg>
+                  <span style="margin: 10px;">View</span>
+                </button>
+              </mat-menu>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
+          </tr>
+        </table>
+        <p *ngIf="dataSource.data.length === 0" class="message">No data found</p>
+      </mat-tab>
+
+      <!-- Tab Completed task  -->
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <label> Completed <span class="number">{{dataSource1.data.length}}</span></label>
+        </ng-template>
+        <table mat-table [dataSource]="dataSource1" class="mat-elevation-z8">
+
+          <!-- Checkbox Column -->
+
+
+          <!-- Task Id Column -->
+          <ng-container matColumnDef="taskID">
+            <th mat-header-cell *matHeaderCellDef> Task ID</th>
+            <td mat-cell *matCellDef="let element "> {{element?.taskId}} </td>
+          </ng-container>
+
+          <!-- Task Topic Column -->
+          <ng-container matColumnDef="taskTopic">
+            <th mat-header-cell *matHeaderCellDef> Task Topic </th>
+            <td mat-cell *matCellDef="let element"> {{element?.taskTopic}} </td>
+          </ng-container>
+
+          <!-- Project Code Column -->
+          <ng-container matColumnDef="projectCode">
+            <th mat-header-cell *matHeaderCellDef> Project Code </th>
+            <td mat-cell *matCellDef="let element"> {{element?.projectCode}} </td>
+          </ng-container>
+
+          <!-- Start/End Date Column -->
+          <ng-container matColumnDef="startDate/endDate">
+            <th mat-header-cell *matHeaderCellDef> Start date / End Date </th>
+            <td mat-cell *matCellDef="let element"> {{element?.startDate}} - {{element?.endDate}}
+            </td>
+          </ng-container>
+
+          <!-- Completed On Column -->
+          <ng-container matColumnDef="completedOn">
+            <th mat-header-cell *matHeaderCellDef> Completed On </th>
+            <td mat-cell *matCellDef="let element"> {{element?.completedOn}} </td>
+          </ng-container>
+
+          <!-- Assignee Column -->
+          <ng-container matColumnDef="reporter">
+            <th mat-header-cell *matHeaderCellDef> Reporter </th>
+            <td mat-cell *matCellDef="let element"> {{element?.reporter}} </td>
+          </ng-container>
+
+          <!-- Status Column -->
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef> Status </th>
+            <td mat-cell *matCellDef="let element">
+              <div class="statusCompleted status"> {{element?.status}} </div>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="star">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+              <button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" class="icon" style="min-height: 0px !important;" >
+                <i class="bi bi-three-dots-vertical">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                  </svg>
+                </i>
+              </button>
+              <mat-menu #menu="matMenu">
+
+                <button class="menubutton" (click)="onViewTask(element)">
+                  <i class="bi bi-trash3-fill"></i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                    <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                  </svg>
+                  <span style="margin: 10px;">View</span>
+                </button>
+
+              </mat-menu>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
+          </tr>
+        </table>
+        <p *ngIf="dataSource1.data.length === 0" class="message">No data found</p>
+
+      </mat-tab>
+
+      <!-- Tab Pending Task -->
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <label> Pending <span class="number">{{dataSource2.data.length}}</span></label>
+        </ng-template>
+        <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
+
+          <!-- Checkbox Column -->
+   
+
+          <!-- Task Id Column -->
+          <ng-container matColumnDef="taskID">
+            <th mat-header-cell *matHeaderCellDef> Task ID</th>
+            <td mat-cell *matCellDef="let element "> {{element?.taskId}} </td>
+          </ng-container>
+
+          <!-- Task Topic Column -->
+          <ng-container matColumnDef="taskTopic">
+            <th mat-header-cell *matHeaderCellDef> Task Topic </th>
+            <td mat-cell *matCellDef="let element"> {{element?.taskTopic}} </td>
+          </ng-container>
+
+          <!-- Project Code Column -->
+          <ng-container matColumnDef="projectCode">
+            <th mat-header-cell *matHeaderCellDef> Project Code </th>
+            <td mat-cell *matCellDef="let element"> {{element?.projectCode}} </td>
+          </ng-container>
+
+          <!-- Start/End Date Column -->
+          <ng-container matColumnDef="startDate/endDate">
+            <th mat-header-cell *matHeaderCellDef> Start date / End Date </th>
+            <td mat-cell *matCellDef="let element"> {{element?.startDate}} - {{element?.endDate}}
+            </td>
+          </ng-container>
+
+          <!-- Completed On Column -->
+          <ng-container matColumnDef="completedOn">
+            <th mat-header-cell *matHeaderCellDef> Completed On </th>
+            <td mat-cell *matCellDef="let element"> {{element?.completedOn}} </td>
+          </ng-container>
+
+          <!-- Assignee Column -->
+          <ng-container matColumnDef="reporter">
+            <th mat-header-cell *matHeaderCellDef> Reporter </th>
+            <td mat-cell *matCellDef="let element"> {{element?.reporter}} </td>
+          </ng-container>
+
+          <!-- Status Column -->
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef> Status </th>
+            <td mat-cell *matCellDef="let element">
+              <div class="statusPending status"> {{element?.status}} </div>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="star">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+              <button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" class="icon">
+                <i class="bi bi-three-dots-vertical">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                  </svg>
+                </i>
+              </button>
+              <mat-menu #menu="matMenu">
+
+                <button class="menubutton" (click)="onViewTask(element)">
+                  <i class="bi bi-trash3-fill"></i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                    <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                  </svg>
+                  <span style="margin: 10px;">View</span>
+                </button>
+              </mat-menu>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
+          </tr>
+        </table>
+        <p *ngIf="dataSource2.data.length === 0" class="message">No data found</p>
+      </mat-tab>
+
+      <!-- delete, filter and new task -->
+      <mat-tab disabled>
+        <!-- <ng-container matColumnDef="select"> -->
+        <!-- <th mat-header-cell *matHeaderCellDef> -->
+        <ng-template mat-tab-label>
+
+          <!-- <mat-menu #menu="matMenu"> -->
+
+          <mat-form-field class="button-filter">
+            <mat-label>Filter</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Search .." #input>
+          </mat-form-field>
+
+          <!-- </mat-menu> -->
+
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
+
+  </div>
+</div>
