@@ -6,7 +6,8 @@
 export const environment = {
   production: false,
    /* URL:'http://localhost:8082/' */
-  URL:' http://127.0.0.1:5000/'
+  // URL:' http://127.0.0.1:5000/'
+  URL:'https://m3sbackend.onrender.com/'
 
 
   //  URL:'http://192.168.12.143:8082/'
