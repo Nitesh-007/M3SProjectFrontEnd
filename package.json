@@ -1,13 +1,13 @@
 {
   "name": "mmms",
   "version": "0.0.0",
-  "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
-  },
+ "scripts": {
+  "ng": "ng",
+  "start": "set NODE_OPTIONS=--openssl-legacy-provider && ng serve",
+  "build": "set NODE_OPTIONS=--openssl-legacy-provider && ng build",
+  "watch": "ng build --watch --configuration development",
+  "test": "ng test"
+},
   "private": true,
   "dependencies": {
     "@angular/animations": "~12.2.0",

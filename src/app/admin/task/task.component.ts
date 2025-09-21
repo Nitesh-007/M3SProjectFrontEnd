@@ -57,6 +57,7 @@ export class TaskComponent implements OnInit {
     "CompleteTask",
     "PendingTask",
     "Location",
+    
   ];
 
 
@@ -83,30 +84,30 @@ export class TaskComponent implements OnInit {
 
 
 /** Whether the number of selected elements matches the total number of rows. */
-isAllSelected() {
-  const numSelected = this.selection.selected.length;
-  const numRows = this.dataSource.data.length;
-  return numSelected === numRows;
-  }
+// isAllSelected() {
+//   const numSelected = this.selection.selected.length;
+//   const numRows = this.dataSource.data.length;
+//   return numSelected === numRows;
+//   }
 
-  isAllSelecte() {
-    const numSelected = this.selections.selected.length;
-    const numRows = this.dataSources.data.length;
-    return numSelected === numRows;
-    }
+  // isAllSelecte() {
+  //   const numSelected = this.selections.selected.length;
+  //   const numRows = this.dataSources.data.length;
+  //   return numSelected === numRows;
+  //   }
 
   /** Selects all rows if they are not all selected; otherwise clear selection. */
-  masterToggle() {
-    this.isAllSelected()
-      ? this.selection.clear()
-      : this.dataSource.data.forEach((row) => this.selection.select(row));
-  }
+  // masterToggle() {
+  //   this.isAllSelected()
+  //     ? this.selection.clear()
+  //     : this.dataSource.data.forEach((row) => this.selection.select(row));
+  // }
 
-  masterToggles() {
-    this.isAllSelecte()
-      ? this.selections.clear()
-      : this.dataSources.data.forEach((row) => this.selections.select(row));
-  }
+  // masterToggles() {
+  //   this.isAllSelecte()
+  //     ? this.selections.clear()
+  //     : this.dataSources.data.forEach((row) => this.selections.select(row));
+  // }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

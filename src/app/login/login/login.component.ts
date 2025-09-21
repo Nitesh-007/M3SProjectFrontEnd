@@ -35,11 +35,13 @@ export class LoginComponent implements OnInit {
   
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.pattern('[A-Za-z0-9.]{2,}@[a-zA-Z]{3,}[.]{1}[com, in, org]{2,3}$')]),
+    
     password: new FormControl('', [Validators.required, Validators.pattern('(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$')])
   });
 
   ngOnInit(): void {
     this.autoLogin()
+    console.log(this.loginForm)
 
   }
 
@@ -152,6 +154,7 @@ export class LoginComponent implements OnInit {
   get formControl() {
     return this.loginForm.controls;
   }
+  
 
 
   redirect(response: any) {
