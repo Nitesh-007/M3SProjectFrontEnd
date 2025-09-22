@@ -28,7 +28,7 @@ export class ErrorInterceptor implements HttpInterceptor {
           this.auth.logout();
           location.reload();
         } 
-        else if (err.status === 409  ||  err.status === 500 ) {
+        else if (err.status === 409  ||  err.status === 500 ||err.status === 402 ) {
           this._snackBar.open(err.error.message, "", {
             duration: 3000,
             verticalPosition: "top",
