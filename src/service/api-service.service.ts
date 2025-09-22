@@ -100,13 +100,16 @@ export class ApiServiceService {
 
   menteesList() {
     // return this.http.get<any>("http://192.168.12.143:8082/admin/get-list-of/MENTEE/?length=4")
-    return this.http.get<any>("http://127.0.0.1:5000/mentee")
+    // return this.http.get<any>("http://127.0.0.1:5000/mentee")
+      return this.http.get<any>("https://m3sbackend.onrender.com/mentee")
+
+   
   }
 
 
   mentor() {
     // return this.http.get<any>("http://192.168.12.143:8082/admin/get-list-of/MENTOR/?length=all")
-    return this.http.get<any>("http://127.0.0.1:5000/allmentor")
+    return this.http.get<any>("https://m3sbackend.onrender.com/allmentor")
   }
 
   // mentor(){
@@ -117,7 +120,7 @@ export class ApiServiceService {
 
   mentee() {
     // return this.http.get<any>("http://192.168.12.143:8082/admin/get-list-of/MENTEE/?length=all")
-    return this.http.get<any>("http://127.0.0.1:5000/mentees")
+    return this.http.get<any>("https://m3sbackend.onrender.com/mentees")
   }
   // mentee(){
   //   return this.http.get<any>("http://172.16.34.173:8082/admin/get-list-of/MENTEE/?length=all")
@@ -125,18 +128,18 @@ export class ApiServiceService {
 
   task() {
     // return this.http.get<any>("http://192.168.12.143:8082/admin/get-task-detail/")
-    return this.http.get<any>("http://127.0.0.1:5000/taskdata")
+    return this.http.get<any>("https://m3sbackend.onrender.com/taskdata")
 
   }
 
   chartData() {
     // return this.http.get<any>("http://192.168.12.143:8082/admin/overall-mentor-count-by-tech-group")
-    return this.http.get<any>("http://127.0.0.1:5000/chart")
+    return this.http.get<any>("https://m3sbackend.onrender.com/chart")
   }
 
 
   addUserData(data: any) {
-    return this.http.post<any>("http://127.0.0.1:5000/employees", data)
+    return this.http.post<any>("https://m3sbackend.onrender.com/employees", data)
       .pipe(
         tap(() => {
           this.refreshneeded.next()
@@ -147,28 +150,28 @@ export class ApiServiceService {
 
   menteesTaskData() {
     // return this.http.get<any>("http://192.168.12.143:8082/admin/get-overall-task-detail/MENTEE")
-    return this.http.get<any>("http://127.0.0.1:5000/task")
+    return this.http.get<any>("https://m3sbackend.onrender.com/task")
   }
   mentorTaskData() {
     // return this.http.get<any>("http://192.168.12.143:8082/admin/get-overall-task-detail/MENTOR")
-    return this.http.get<any>("http://127.0.0.1:5000/task")
+    return this.http.get<any>("https://m3sbackend.onrender.com/task")
   }
 
   editmentor(email: string) {
 
     // return this.http.get<any>("http://192.168.12.143:8082/admin/get-employee/" + email)
     // return this.http.get<any>("http://172.16.34.173:8082/admin/get-employee/" + email)
-    return this.http.get<any>("http://127.0.0.1:5000/get_employee/"+email)
+    return this.http.get<any>("https://m3sbackend.onrender.com/get_employee/"+email)
   }
 
   editmentee(email: string) {
     // return this.http.get<any>("http://192.168.12.143:8082/admin/get-employee/" + email)
-    return this.http.get<any>("http://127.0.0.1:5000/get_employee/" + email)
+    return this.http.get<any>("https://m3sbackend.onrender.com/get_employee/" + email)
   }
 
   deletementor(email: string) {
     // return this.http.delete<any>("http://192.168.12.143:8082/admin/delete-employee/" + email)
-    return this.http.delete<any>("http://127.0.0.1:5000/delete_User/" + email) 
+    return this.http.delete<any>("https://m3sbackend.onrender.com/delete_User/" + email) 
       .pipe(
         tap(() => {
           this.refreshneeded.next()
@@ -179,7 +182,7 @@ export class ApiServiceService {
 
   deletementee(email: string) {
     // return this.http.delete<any>("http://192.168.12.143:8082/admin/delete-employee/" + email)
-    return this.http.delete<any>("http://127.0.0.1:5000/delete_User/" + email)
+    return this.http.delete<any>("https://m3sbackend.onrender.com/delete_User/" + email)
       .pipe(
         tap(() => {
           this.refreshneeded.next()
@@ -190,59 +193,59 @@ export class ApiServiceService {
 
   updatementorData(data: any, email: string) {
     // return this.http.put("http://192.168.12.143:8082/admin/do-partial-change/" + email, data)
-    return this.http.put("http://127.0.0.1:5000/update_employee/"+email,data)
+    return this.http.put("https://m3sbackend.onrender.com/update_employee/"+email,data)
 
   }
 
   updatementeeData(data: any, email: string) {
     // return this.http.put("http://192.168.12.143:8082/admin/do-partial-change/" + email, data)
-    return this.http.put("http://127.0.0.1:5000/update_employee/" + email, data)
+    return this.http.put("https://m3sbackend.onrender.com/update_employee/" + email, data)
   }
 
   getlocation() {
     // return this.http.get("http://192.168.12.143:8082/admin/get-location/")
-    return this.http.get("http://127.0.0.1:5000/get_location")
+    return this.http.get("https://m3sbackend.onrender.com/get_location")
   }
 
   getTechGroup(data: any) {
     // return this.http.get("http://192.168.12.143:8082/admin/get-tech-group-by-bussiness-unit/" + data)
-    return this.http.get("http://127.0.0.1:5000/get_tech")
+    return this.http.get("https://m3sbackend.onrender.com/get_tech")
   }
 
   getBuDetails() {
     // return this.http.get("http://192.168.12.143:8082/admin/get-bussiness-unit/")
-    return this.http.get("http://127.0.0.1:5000/get_Bu")
+    return this.http.get("https://m3sbackend.onrender.com/get_Bu")
   }
 
   getDesignation() {
     // return this.http.get("http://192.168.12.143:8082/admin/get-designation")
-    return this.http.get("http://127.0.0.1:5000/get_designation")
+    return this.http.get("https://m3sbackend.onrender.com/get_designation")
   }
 
 
   mentorProfile(email: any) {
 
     // return this.http.get<any>("http://192.168.12.143:8082/admin/get-employee/" + email)
-    return this.http.get<any>("http://127.0.0.1:5000/profile/" + email)
+    return this.http.get<any>("https://m3sbackend.onrender.com/profile/" + email)
 
   }
 
   menteeProfile(email: any) {
 
     // return this.http.get<any>("http://192.168.12.143:8082/admin/get-employee/" + email)
-    return this.http.get<any>("http://127.0.0.1:5000/profile/" + email)
+    return this.http.get<any>("https://m3sbackend.onrender.com/profile/" + email)
 
   }
 
   AdminProfile(email: any) {
 
     // return this.http.get<any>("http://192.168.12.143:8082/admin/get-employee/" + email)
-    return this.http.get<any>("http://127.0.0.1:5000/profile/" + email)
+    return this.http.get<any>("https://m3sbackend.onrender.com/profile/" + email)
 
   }
   assignmenteeList(email: any) {
 
-    return this.http.get<any>("http://192.168.12.143:8082/admin/get-unassigned-mentees/" + email)
+    return this.http.get<any>("https://m3sbackend.onrender.com/admin/get-unassigned-mentees/" + email)
 
   }
 
@@ -250,7 +253,7 @@ export class ApiServiceService {
 
 
   AssigneMentee(payload: any) {
-    return this.http.post<any>("http://192.168.12.143:8082/admin/mentor-mentee-mapping", payload)
+    return this.http.post<any>("https://m3sbackend.onrender.com/admin/mentor-mentee-mapping", payload)
       .pipe(
         tap(() => {
           this.refreshneeded.next()
@@ -261,7 +264,7 @@ export class ApiServiceService {
 
 
   unAssignementee(payload: any) {
-    return this.http.post<any>("http://192.168.12.143:8082/admin/remove-mentor-mentee-mapping", payload)
+    return this.http.post<any>("https://m3sbackend.onrender.com/admin/remove-mentor-mentee-mapping", payload)
       .pipe(
         tap(() => {
           this.refreshneeded.next()
