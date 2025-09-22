@@ -20,13 +20,14 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "src/_redirects"  //,
+            
             "outputPath": "dist/mmms",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": [
+              "src/_redirects"  //,
               "src/favicon.ico",
               "src/assets"
             ],
