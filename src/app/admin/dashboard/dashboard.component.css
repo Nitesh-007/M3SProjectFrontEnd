@@ -1,9 +1,9 @@
 .example-card1 {
 
         max-width: 625px;
-        /* height: fit-content; */
-       max-height: 687px;
-      min-height:678px;
+        height: fit-content;
+       /* max-height: 687px;
+      min-height:678px; */
         margin: 15px 20px 10px 10px;
         border-radius: 30px;
 }
